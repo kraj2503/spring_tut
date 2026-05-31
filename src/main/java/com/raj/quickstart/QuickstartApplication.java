@@ -1,13 +1,22 @@
 package com.raj.quickstart;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class QuickstartApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(QuickstartApplication.class, args);
-	}
+    public static void main(String[] args) {
 
+
+
+        ApplicationContext context= SpringApplication.run(QuickstartApplication.class, args);
+
+
+        dev obj = context.getBean(dev.class);
+        obj.build();
+    }
 }
+
