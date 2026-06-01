@@ -1,6 +1,7 @@
 package com.raj.quickstart;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -10,11 +11,13 @@ public class dev {
 
 
     @Autowired
-    private Laptop laptop;
+//    @Qualifier("laptop")
+    @Qualifier("desktop")
+    private Computer comp;
 
     public void build() {
 
-        laptop.compile();
+        comp.compile();
 
 
         System.out.println("build dev");
