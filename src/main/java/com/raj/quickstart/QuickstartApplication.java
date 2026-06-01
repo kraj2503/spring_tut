@@ -11,12 +11,9 @@ public class QuickstartApplication {
     public static void main(String[] args) {
 
 
+        SpringApplication.run(QuickstartApplication.class, args);
 
-        ApplicationContext context= SpringApplication.run(QuickstartApplication.class, args);
 
-
-        dev obj = context.getBean(dev.class);
-        obj.build();
     }
 }
 
