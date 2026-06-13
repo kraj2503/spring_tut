@@ -16,20 +16,21 @@ public class ProductController {
 
     @Autowired
     ProductService service;
+
     @GetMapping("/products")
-    public List<Product> getProducts(){
+    public List<Product> getProducts() {
 
         return service.getProducts();
     }
 
     @GetMapping("/products/{id}")
-    public Product getProductbyId(@PathVariable int id){
+    public Product getProductbyId(@PathVariable int id) {
         return service.getProductbyId(id);
     }
 
     @PostMapping("/product")
-    public ResponseEntity<ApiResponse> addProduct(@RequestBody Product prod){
-        try{
+    public ResponseEntity<ApiResponse> addProduct(@RequestBody Product prod) {
+        try {
             service.addProduct(prod);
 
             return ResponseEntity
@@ -43,8 +44,14 @@ public class ProductController {
     }
 
     @PutMapping("/product")
-    public void updateProduct(@RequestBody Product Prod){
+    public void updateProduct(@RequestBody Product Prod) {
         System.out.println(Prod);
         service.updateProduct(Prod);
+    }
+
+    @DeleteMapping("/product/{ProdId}")
+    public void DeleteMapping(@PathVariable int ProdId) {
+
+        service.deleteProduct(ProdId);
     }
 }

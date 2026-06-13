@@ -3,6 +3,7 @@ package com.raj.quickstart.service;
 import com.raj.quickstart.model.Product;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 import java.util.ArrayList;
@@ -10,7 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 
 
-@Getter
 @Service
 public class ProductService {
 
@@ -19,6 +19,10 @@ public class ProductService {
 
     );
 
+    public List<Product> getProducts() {
+        return products;
+
+    }
 
     public Product getProductbyId(int prodId) {
         return products.stream().filter(x -> x.getProdId() == prodId).findFirst().get();
@@ -41,4 +45,21 @@ public class ProductService {
         }
     }
 
+    //    public void deleteProduct(int prodId) {
+//
+//        int index = 0;
+//
+//        for (Product p : products) {
+//
+//            if (p.getProdId() == prodId) {
+//                products.remove(index);
+//                return;
+//            }
+//
+//            index++;
+//        }
+//    }
+    public void deleteProduct(int prodId) {
+        products.removeIf(p -> p.getProdId() == prodId);
+    }
 }
