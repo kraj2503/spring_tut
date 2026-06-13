@@ -27,7 +27,7 @@ public class ProductController {
         return service.getProductbyId(id);
     }
 
-    @PostMapping("/product/")
+    @PostMapping("/product")
     public ResponseEntity<ApiResponse> addProduct(@RequestBody Product prod){
         try{
             service.addProduct(prod);
@@ -40,5 +40,11 @@ public class ProductController {
                     .status(HttpStatus.BAD_REQUEST)
                     .body(new ApiResponse("Failed to add product"));
         }
+    }
+
+    @PutMapping("/product")
+    public void updateProduct(@RequestBody Product Prod){
+        System.out.println(Prod);
+        service.updateProduct(Prod);
     }
 }

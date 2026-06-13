@@ -1,8 +1,7 @@
 package com.raj.quickstart.service;
 
 import com.raj.quickstart.model.Product;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import lombok.Getter;
 import org.springframework.stereotype.Service;
 
 
@@ -11,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
+@Getter
 @Service
 public class ProductService {
 
@@ -20,10 +20,6 @@ public class ProductService {
     );
 
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
     public Product getProductbyId(int prodId) {
         return products.stream().filter(x -> x.getProdId() == prodId).findFirst().get();
     }
@@ -31,4 +27,18 @@ public class ProductService {
     public void addProduct(Product prod) {
         products.add(prod);
     }
+
+    public void updateProduct(Product prod) {
+
+        int index = 0;
+
+        for (Product p : products) {
+            if (p.getProdId() == prod.getProdId()) {
+                products.set(index, prod);
+                return;
+            }
+            index++;
+        }
+    }
+
 }
